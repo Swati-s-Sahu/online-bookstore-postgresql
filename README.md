@@ -1,110 +1,118 @@
-# online-bookstore-postgresql
-This project is a relational database implementation of an Online Book Store built using PostgreSQL. It focuses on designing a structured database, importing real-world data, and performing SQL queries to analyze book sales, customers, and orders.
+# 📚 Online Book Store Database Project (PostgreSQL)
 
-🗂️ Database Structure
+## 📌 Project Overview
+This project is a relational database implementation of an **Online Book Store** developed using **PostgreSQL**.  
+The main objective of this project is to design a structured database, import real-world data, and perform SQL queries to analyze books, customers, orders, sales, and inventory.
 
-The database consists of three main tables:
+This project demonstrates practical usage of **SQL for database design and data analysis**.
 
-Books
+---
 
-Book_ID (Primary Key)
+## 🛠️ Tools & Technologies
+- **Database:** PostgreSQL  
+- **Language:** SQL  
+- **Concepts Used:**
+  - Relational Database Design
+  - Primary & Foreign Keys
+  - Joins (INNER JOIN, LEFT JOIN)
+  - Aggregation Functions
+  - Group By & Having
+  - Data Analysis Queries
 
-Title
+---
 
-Author
+## 🗂️ Database Structure
+The database consists of **three main tables**:
 
-Genre
+### 📘 Books
+- Book_ID (Primary Key)
+- Title
+- Author
+- Genre
+- Published_Year
+- Price
+- Stock
 
-Published_Year
+### 👤 Customers
+- Customer_ID (Primary Key)
+- Name
+- Email
+- Phone
+- City
+- Country
 
-Price
+### 🛒 Orders
+- Order_ID (Primary Key)
+- Customer_ID (Foreign Key)
+- Book_ID (Foreign Key)
+- Order_Date
+- Quantity
+- Total_Amount
 
-Stock
+---
 
-Customers
+## 📥 Data Import
+Data is imported into PostgreSQL tables from CSV files using the `COPY` command:
+- Books.csv
+- Customers.csv
+- Orders.csv
 
-Customer_ID (Primary Key)
+This simulates real-world data handling in database projects.
 
-Name
+---
 
-Email
+## 🔍 SQL Queries Performed
 
-Phone
+### ✅ Basic Queries
+- Retrieve books by genre and publication year
+- List customers by country
+- Find orders within a specific date range
+- Calculate total stock of books
+- Identify most expensive and least stocked books
+- Retrieve total revenue generated from orders
 
-City
+### 🚀 Advanced Queries
+- Total books sold by each genre
+- Average book price by genre
+- Customers with multiple orders
+- Most frequently ordered book
+- Top 3 most expensive books by genre
+- Total books sold by each author
+- Cities of high-spending customers
+- Customer with highest total spending
+- Remaining stock after fulfilling all orders
 
-Country
+---
 
-Orders
 
-Order_ID (Primary Key)
+## 📊 Sample SQL Query
 
-Customer_ID (Foreign Key)
+```sql
+SELECT b.genre, SUM(o.quantity) AS total_books_sold
+FROM orders o
+JOIN books b ON o.book_id = b.book_id
+GROUP BY b.genre;
+```
 
-Book_ID (Foreign Key)
+---
 
-Order_Date
+## 📁 Project Structure
 
-Quantity
+```
+online-bookstore-postgresql/
+│
+├── README.md
+├── sql/
+│   ├── database.sql
+│   └── queries.sql
+│
+├── data/
+│   ├── Books.csv
+│   ├── Customers.csv
+│   └── Orders.csv
 
-Total_Amount
+```
 
-📥 Data Import
 
-Data was imported from CSV files into PostgreSQL tables using the COPY command.
 
-Ensured proper data types and referential integrity.
 
-🔍 SQL Queries & Analysis
-
-The project includes basic and advanced SQL queries, such as:
-
-Filtering books by genre and publication year
-
-Customer and order analysis by country and date
-
-Stock management and inventory tracking
-
-Revenue calculation and sales performance
-
-Genre-wise and author-wise book sales
-
-Identifying top customers and most frequently ordered books
-
-Remaining stock calculation after fulfilling all orders
-
-📊 Key Insights Generated
-
-Total revenue generated from orders
-
-Best-selling genres and authors
-
-Most expensive and least stocked books
-
-Customers with highest spending
-
-Cities contributing to higher sales
-
-🛠️ Tools & Technologies
-
-Database: PostgreSQL
-
-Language: SQL
-
-Concepts Used:
-
-Database Design
-
-Primary & Foreign Keys
-
-Joins (INNER, LEFT)
-
-Aggregation Functions
-
-Group By & Having
-
-Data Analysis Queries
-
-🚀 Learning Outcome
-
-This project strengthened my understanding of SQL querying, relational database design, and data analysis using PostgreSQL, making it suitable for entry-level roles in Data Analysis / SQL Developer / Database Management.
